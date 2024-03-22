@@ -57,7 +57,59 @@ export default buildConfig({
         },
       ],
     },
+    {
+      slug: 'posts',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+        },
+        {
+          name: 'content',
+          type: 'text',
+        },
+        {
+          name: 'published',
+          type: 'checkbox',
+        },
+      ],
+    },
+    {
+      slug: 'categories',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+        {
+          name: 'description',
+          type: 'text',
+        },
+        {
+          name: 'posts',
+          type: 'relationship',
+          relationTo: 'posts',
+          hasMany: true,
+        },
+      ],
+    },
+    {
+      slug: 'tags',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+        {
+          name: 'posts',
+          type: 'relationship',
+          relationTo: 'posts',
+          hasMany: true,
+        },
+      ],
+    },
   ],
+
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -67,16 +119,6 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URI || '',
     },
   }),
-  // db: mongooseAdapter({
-  //   url: process.env.MONGODB_URI || '',
-  // }),
-  // admin: {
-  //   autoLogin: {
-  //     email: 'dev@payloadcms.com',
-  //     password: 'test',
-  //     prefillOnly: true,
-  //   },
-  // },
   async onInit(payload) {
     const existingUsers = await payload.find({
       collection: 'users',
@@ -86,6 +128,7 @@ export default buildConfig({
     if (existingUsers.docs.length === 0) {
       await payload.create({
         collection: 'users',
+
         data: {
           email: 'dev@payloadcms.com',
           password: 'test',
