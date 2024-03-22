@@ -46,11 +46,14 @@ export default buildConfig({
       ],
     },
     {
-      slug: 'media',
-      upload: true,
+      slug: 'topics',
       fields: [
         {
           name: 'text',
+          type: 'text',
+        },
+        {
+          name: 'description',
           type: 'text',
         },
       ],

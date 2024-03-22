@@ -9,7 +9,7 @@
 export interface Config {
   collections: {
     pages: Page;
-    media: Media;
+    topics: Topic;
     posts: Post;
     categories: Category;
     tags: Tag;
@@ -46,19 +46,14 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "topics".
  */
-export interface Media {
+export interface Topic {
   id: number;
   text?: string | null;
+  description?: string | null;
   updatedAt: string;
   createdAt: string;
-  url?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
