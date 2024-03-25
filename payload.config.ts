@@ -124,6 +124,45 @@ export default buildConfig({
       ],
     },
     {
+      slug: 'pablo',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+        {
+          name: 'bio',
+          type: 'richText',
+        },
+      ],
+    },
+    {
+      slug: 'lautaro',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+        {
+          name: 'bio',
+          type: 'richText',
+        },
+      ],
+    },
+    {
+      slug: 'elpollo',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+        {
+          name: 'bio',
+          type: 'richText',
+        },
+      ],
+    },
+    {
       slug: 'posts',
       fields: [
         {
