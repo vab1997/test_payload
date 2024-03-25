@@ -6,17 +6,29 @@ export default async function PostHome() {
     config: configPromise,
   })
 
-  const data = await payload.find({
+  const posts = await payload.find({
     collection: 'posts',
+  })
+
+  const authors = await payload.find({
+    collection: 'authors',
   })
 
   return (
     <div>
-      <h1>all posts</h1>
-      {data.docs.map((post) => (
-        <div key={post.id}>
-          <h1>{post.title}</h1>
-          <p>{post.content}</p>
+      <h1 className="text-xl font-medium">all posts</h1>
+      {posts.docs.map((post) => (
+        <div key={post.id} className="p-4 bg-blue-200">
+          <h1 className="text-lg">{post.title}</h1>
+          <p className="text-center">{JSON.stringify(post.content)}</p>
+        </div>
+      ))}
+
+      <h1 className="text-xl font-medium">all authors</h1>
+      {authors.docs.map((author) => (
+        <div key={author.id} className="p-4 bg-blue-200">
+          <h1 className="text-lg">{author.name}</h1>
+          <p className="text-center">{JSON.stringify(author.bio)}</p>
         </div>
       ))}
     </div>
