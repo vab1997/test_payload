@@ -111,6 +111,19 @@ export default buildConfig({
       ],
     },
     {
+      slug: 'vitor',
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+        {
+          name: 'bio',
+          type: 'richText',
+        },
+      ],
+    },
+    {
       slug: 'posts',
       fields: [
         {
@@ -169,8 +182,9 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URI || '',
+      connectionString: process.env.DATABASE_URL || '',
     },
+    migrationDir: path.resolve(dirname, 'migrations'),
   }),
   async onInit(payload) {
     const existingUsers = await payload.find({

@@ -14,6 +14,7 @@ export interface Config {
     diego: Diego;
     milo: Milo;
     authors: Author;
+    vitor: Vitor;
     posts: Post;
     categories: Category;
     tags: Tag;
@@ -139,6 +140,31 @@ export interface Milo {
  * via the `definition` "authors".
  */
 export interface Author {
+  id: number;
+  name?: string | null;
+  bio?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vitor".
+ */
+export interface Vitor {
   id: number;
   name?: string | null;
   bio?: {
