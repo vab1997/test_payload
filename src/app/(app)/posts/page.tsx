@@ -17,20 +17,24 @@ export default async function PostHome() {
   return (
     <div>
       <h1 className="text-xl font-medium">all posts</h1>
-      {posts.docs.map((post) => (
-        <div key={post.id} className="p-4 bg-blue-200">
-          <h1 className="text-lg">{post.title}</h1>
-          <p className="text-center">{JSON.stringify(post.content)}</p>
-        </div>
-      ))}
+      {posts
+        ? posts.docs.map((post) => (
+            <div key={post.id} className="p-4 bg-blue-200">
+              <h1 className="text-lg">{post.title}</h1>
+              <p className="text-center">{JSON.stringify(post.content)}</p>
+            </div>
+          ))
+        : null}
 
       <h1 className="text-xl font-medium">all authors</h1>
-      {authors.docs.map((author) => (
-        <div key={author.id} className="p-4 bg-blue-200">
-          <h1 className="text-lg">{author.name}</h1>
-          <p className="text-center">{JSON.stringify(author.bio)}</p>
-        </div>
-      ))}
+      {authors
+        ? authors.docs.map((author) => (
+            <div key={author.id} className="p-4 bg-blue-200">
+              <h1 className="text-lg">{author.name}</h1>
+              <p className="text-center">{JSON.stringify(author.bio)}</p>
+            </div>
+          ))
+        : null}
     </div>
   )
 }
